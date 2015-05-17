@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>JavaScript</title>
-    <script src=
-    "http://cdnjs.cloudflare.com/ajax/libs/processing.js/1.4.8/processing.min.js"></script>
+  <title>JavaScript</title>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/processing.js/1.4.8/processing.min.js"></script>
 </head>
-
 <body>
-    <canvas id="canvas"></canvas> <script>
-var canvas = document.getElementById("canvas");
+  <canvas id="canvas"></canvas>
+  <script>
+    var canvas = document.getElementById("canvas");
     var processing = new Processing(canvas, function(processing) {
         processing.size(400, 400);
         processing.background(0xFFF);
@@ -32,19 +31,19 @@ var canvas = document.getElementById("canvas");
 
             angleMode = "radians";
 
-    var Wave = function(amplitude, period, color) {
+var Wave = function(amplitude, period, color) {
     this.startAngle = 0;
     this.amplitude = amplitude;
     this.period = period;
     this.color = color;
     this.angleVel = (TWO_PI / this.period) * 5;
-    };
+};
 
-    Wave.prototype.update = function() {
+Wave.prototype.update = function() {
     this.startAngle += TWO_PI / this.period;
-    };
+};
 
-    Wave.prototype.draw = function() {
+Wave.prototype.draw = function() {
     //this.startAngle+=0.015;
     var angle = this.startAngle;
     fill(this.color);
@@ -53,19 +52,19 @@ var canvas = document.getElementById("canvas");
         ellipse(x,y+height/2,40,40);
         angle += this.angleVel;
     }
-    };
+};
 
-    var wave = new Wave(200, 175, color(255, 0, 0, 100));
-    var wave2 = new Wave(175, 200, color(77, 163, 149, 100));
+var wave = new Wave(200, 175, color(255, 0, 0, 100));
+var wave2 = new Wave(175, 200, color(77, 163, 149, 100));
 
-    translate(0, height/2);
-    var draw = function() {
+translate(0, height/2);
+var draw = function() {
     background(255);
     wave.update();
     wave.draw();
     wave2.update();
     wave2.draw();
-    };
+};
 
 
 
@@ -73,6 +72,6 @@ var canvas = document.getElementById("canvas");
         }
         if (typeof draw !== 'undefined') processing.draw = draw;
     });
-    </script>
+  </script>
 </body>
 </html>
